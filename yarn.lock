@@ -715,10 +715,10 @@
     postgres-date "2.1.0"
     postgres-interval "4.0.2"
 
-"@mikro-orm/seeder@^6.4.11":
-  version "6.4.11"
-  resolved "https://registry.yarnpkg.com/@mikro-orm/seeder/-/seeder-6.4.11.tgz#6440e94934dbc1b0d6b07b7fe4aa37f56aa3a025"
-  integrity sha512-MS0zIW/5nq4n8NNJkqGTUYWcoQfM8LqhJDGuf3fd9BjxY7+R2+NoHrXDG/GapjSGK3x/lVah6A03QtNhgQqrCQ==
+"@mikro-orm/seeder@6.4.10":
+  version "6.4.10"
+  resolved "https://registry.yarnpkg.com/@mikro-orm/seeder/-/seeder-6.4.10.tgz#bbdd1bc09f8cd2f1aa8b5bd9b431b8ca54c1b3de"
+  integrity sha512-E1ncWBW4d7w8gxo6wlCw8oeG1k7TyfW3rCZShECHWSL92kVIHSZgMQJTgXvkuKEaqXh29DFAabpNgjtJTubjJg==
   dependencies:
     fs-extra "11.3.0"
     globby "11.1.0"
