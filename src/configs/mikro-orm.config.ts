@@ -4,9 +4,7 @@ import 'dotenv/config';
 
 const MikroORMOptions: MikroOrmModuleOptions<PostgreSqlDriver> = {
   allowGlobalContext: true,
-  ...(process.env.NODE_ENV === 'dev'
-    ? { debug: false, logger: console.log.bind(console) }
-    : {}),
+  ...(process.env.NODE_ENV === 'dev' ? { debug: false, logger: console.log.bind(console) } : {}),
   entities: ['./dist/mikroorm/entities/'],
   entitiesTs: ['./src/mikroorm/entities/'],
   clientUrl:
@@ -16,8 +14,8 @@ const MikroORMOptions: MikroOrmModuleOptions<PostgreSqlDriver> = {
         ? process.env.DB_URL_TEST
         : process.env.DB_URL,
   seeder: {
-    path: './dist/src/modules/mikroorm/seeders', // path to the folder with seeders
-    pathTs: './src/modules/mikroorm/seeders', // path to the folder with TS seeders (if used, we should put path to compiled files in `path`)
+    path: './dist/src/mikroorm/seeders', // path to the folder with seeders
+    pathTs: './src/mikroorm/seeders', // path to the folder with TS seeders (if used, we should put path to compiled files in `path`)
     defaultSeeder: 'ConfigSeeder', // default seeder class name
     glob: '!(*.d).{js,ts}', // how to match seeder files (all .js and .ts files, but not .d.ts)
     emit: 'ts', // seeder generation mode
