@@ -1,0 +1,39 @@
+version: '3.8'
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nest_api
+    command: sh -c -f "yarn mikro-orm schema:update --run&&yarn mikro-orm seeder:run --class=ConfigSeeder;yarn run start:prod"
+    env_file:
+      - .env
+    ports:
+      - '${PORT:-3000}:3000'
+    depends_on:
+      - postgresdb
+    networks:
+      - app_network
+
+  postgresdb:
+    image: postgres:15
+    container_name: nest_postgres
+    restart: always
+    ports:
+      - '${DB_PORT:-5432}:5432'
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./docker/init/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - app_network
+
+volumes:
+  pgdata:
+
+networks:
+  app_network:
+    driver: bridge
