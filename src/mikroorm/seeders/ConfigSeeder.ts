@@ -31,26 +31,45 @@ export class ConfigSeeder extends Seeder {
     await em
       .getConnection()
       .execute(
-        `INSERT INTO "licensing" ("id", "license_activator_ref", "license_manual_ref", "os") VALUES (1,	'https://disk.yandex.ru/d/uG9RhyLS3rJLCw',	'https://disk.yandex.ru/i/6ZMha5dwurmdgQ',	'LIN');`,
+        `INSERT INTO "licensing" ("id", "license_activator_ref", "license_manual_ref", "os") VALUES (1,	'https://disk.yandex.ru/d/uG9RhyLS3rJLCw',	'https://disk.yandex.ru/i/6ZMha5dwurmdgQ',	'LIN') ON CONFLICT ("id") DO UPDATE SET "id" = EXCLUDED."id";`,
       );
 
     await em
       .getConnection()
       .execute(
-        `INSERT INTO "manual" ("id", "manual_name", "manual_ref") VALUES (1,	'Настройка аппаратуры',	'https://disk.yandex.ru/i/VWZZd4sot8Px3Q');`,
+        `INSERT INTO "manual" ("id", "manual_name", "manual_ref") VALUES (1,	'Настройка аппаратуры',	'https://disk.yandex.ru/i/VWZZd4sot8Px3Q') ON CONFLICT ("id") DO UPDATE SET "id" = EXCLUDED."id";`,
       );
-    await em
-      .getConnection()
-      .execute(`INSERT INTO "manual_versions" ("manual_id", "version_id") VALUES (1, 1);`);
+
     await em
       .getConnection()
       .execute(
-        `INSERT INTO "simulator" ("id", "label", "first_name", "second_name", "description", "product_key", "product_number", "icon", "main_image", "is_free", "edu_sim", "images") VALUES (1,	'AgroTechSIm',	'AgroTechSim',	'Десктопное ПО',	'Симулятор для полетов',	1,	1,	'images/logoARA.ico',	'/static/cat.png',	'0',	'0',	'/static/cat.png,/static/cat.png,/static/cat.png,/static/cat.png');`,
+        `INSERT INTO "simulator" ("id", "label", "first_name", "second_name", "description", "product_key", "product_number", "icon", "main_image", "is_free", "edu_sim", "images") VALUES (1,	'AgroTechSIm',	'AgroTechSim',	'Десктопное ПО',	'Симулятор для полетов',	1,	1,	'images/logoARA.ico',	'/static/cat.png',	'0',	'0',	'/static/cat.png,/static/cat.png,/static/cat.png,/static/cat.png') ON CONFLICT ("id") DO UPDATE SET "id" = EXCLUDED."id";;`,
       );
     await em
       .getConnection()
       .execute(
-        `INSERT INTO "version" ("id", "simulator_id", "version_str", "build_ref", "patch_note", "image", "os", "at_load", "archive_size", "sys_req") VALUES (1,	1,	'0.4.11',	'https://disk.yandex.ru/d/oama_mdIY3Ig_Q',	'Версия симулятора EduTechSim от компании Прикладная робототехника. Предназначена для получения базовых навыков пилотирования и обслуживания БПЛА различных типов и размеров',	'images/image.PNG',	'WIN',	NULL,	3,	'2'),	(2,	1,	'0.4.12',	'https://disk.yandex.ru/d/oama_mdIY3Ig_Q',	'Версия симулятора EduTechSim от компании Прикладная робототехника. Предназначена для базовых навыков пилотирования и обслуживания БПЛА различных типов и размеров',	'images/image_qHIHiN2.PNG',	'LIN',	NULL,	3,	'2');`,
+        `INSERT INTO "version" ("id", "simulator_id", "version_str", "build_ref", "patch_note", "image", "os", "at_load", "archive_size", "sys_req") VALUES (1,	1,	'0.4.11',	'https://disk.yandex.ru/d/oama_mdIY3Ig_Q',	'Версия симулятора EduTechSim от компании Прикладная робототехника. Предназначена для получения базовых навыков пилотирования и обслуживания БПЛА различных типов и размеров',	'images/image.PNG',	'WIN',	NULL,	3,	'2'),	(2,	1,	'0.4.12',	'https://disk.yandex.ru/d/oama_mdIY3Ig_Q',	'Версия симулятора EduTechSim от компании Прикладная робототехника. Предназначена для базовых навыков пилотирования и обслуживания БПЛА различных типов и размеров',	'images/image_qHIHiN2.PNG',	'LIN',	NULL,	3,	'2') ON CONFLICT ("id") DO UPDATE SET "id" = EXCLUDED."id";`,
+      );
+
+    await em
+      .getConnection()
+      .execute(
+        `INSERT INTO "manual_versions" ("manual_id", "version_id") VALUES (1, 1) ON CONFLICT ("manual_id", "version_id") DO UPDATE SET "manual_id" = EXCLUDED."manual_id";`,
       );
   }
 }
+// INSERT INTO "licensing" ("id", "license_activator_ref", "license_manual_ref", "os") VALUES
+// (1,	'https://disk.yandex.ru/d/uG9RhyLS3rJLCw',	'https://disk.yandex.ru/i/6ZMha5dwurmdgQ',	'LIN');
+
+// INSERT INTO "manual" ("id", "manual_name", "manual_ref") VALUES
+// (1,	'Настройка аппаратуры',	'https://disk.yandex.ru/i/VWZZd4sot8Px3Q');
+
+// INSERT INTO "manual_versions" ("manual_id", "version_id") VALUES
+// (1,	1);
+
+// INSERT INTO "simulator" ("id", "label", "first_name", "second_name", "description", "product_key", "product_number", "icon", "main_image", "is_free", "edu_sim", "images") VALUES
+// (1,	'AgroTechSIm',	'AgroTechSim',	'Десктопное ПО',	'Симулятор для полетов',	1,	1,	'images/logoARA.ico',	'/static/cat.png',	'0',	'0',	'/static/cat.png,/static/cat.png,/static/cat.png,/static/cat.png');
+
+// INSERT INTO "version" ("id", "simulator_id", "version_str", "build_ref", "patch_note", "image", "os", "at_load", "archive_size", "sys_req") VALUES
+// (1,	1,	'0.4.11',	'https://disk.yandex.ru/d/oama_mdIY3Ig_Q',	'Версия симулятора EduTechSim от компании Прикладная робототехника. Предназначена для получения базовых навыков пилотирования и обслуживания БПЛА различных типов и размеров',	'images/image.PNG',	'WIN',	NULL,	3,	'2'),
+// (2,	1,	'0.4.12',	'https://disk.yandex.ru/d/oama_mdIY3Ig_Q',	'Версия симулятора EduTechSim от компании Прикладная робототехника. Предназначена для базовых навыков пилотирования и обслуживания БПЛА различных типов и размеров',	'images/image_qHIHiN2.PNG',	'LIN',	NULL,	3,	'2');
