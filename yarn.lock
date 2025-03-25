@@ -715,6 +715,14 @@
     postgres-date "2.1.0"
     postgres-interval "4.0.2"
 
+"@mikro-orm/seeder@^6.4.11":
+  version "6.4.11"
+  resolved "https://registry.yarnpkg.com/@mikro-orm/seeder/-/seeder-6.4.11.tgz#6440e94934dbc1b0d6b07b7fe4aa37f56aa3a025"
+  integrity sha512-MS0zIW/5nq4n8NNJkqGTUYWcoQfM8LqhJDGuf3fd9BjxY7+R2+NoHrXDG/GapjSGK3x/lVah6A03QtNhgQqrCQ==
+  dependencies:
+    fs-extra "11.3.0"
+    globby "11.1.0"
+
 "@nestjs/cli@^10.0.0":
   version "10.4.9"
   resolved "https://registry.yarnpkg.com/@nestjs/cli/-/cli-10.4.9.tgz#ac3a23096a4725465360d8d60810f3e857f4a803"
