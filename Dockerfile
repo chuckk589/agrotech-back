@@ -5,6 +5,7 @@ COPY package.json tsconfig.json tsconfig.build.json yarn.lock  ./
 RUN yarn --frozen-lockfile
 
 COPY ./src /app/src
+COPY ./public /app/public
 COPY ./shared /app/shared
 
 RUN yarn run build
