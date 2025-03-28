@@ -35,22 +35,22 @@ export class ConfigSeeder extends Seeder {
 
     await em.getConnection().execute(`
       SET session_replication_role = 'replica';
-TRUNCATE "manual";
+TRUNCATE "manual" CASCADE;
 INSERT INTO "manual" ("id", "manual_name", "manual_ref") VALUES
 (1,	'Настройка аппаратуры',	'https://disk.yandex.ru/i/VWZZd4sot8Px3Q');
 
-TRUNCATE "manual_versions";
+TRUNCATE "manual_versions" CASCADE;
 INSERT INTO "manual_versions" ("manual_id", "version_id") VALUES
 (1,	1);
 
-TRUNCATE "simulator";
+TRUNCATE "simulator" CASCADE;
 INSERT INTO "simulator" ("id", "label", "first_name", "second_name", "description", "product_key", "product_number", "icon", "main_image", "images", "is_free", "edu_sim") VALUES
 (1,	'AgroTechSIm',	'AgroTechSim',	'Десктопное ПО',	'Симулятор для полетов',	1,	1,	'images/logoARA.ico',	'/static/cat.png',	'/static/cat.png,/static/cat.png,/static/cat.png,/static/cat.png',	'0',	'0'),
 (2,	'AgroTechSIm2',	'AgroTechSim2',	'Десктопное ПО',	'Симулятор для полетов',	1,	1,	'images/logoARA.ico',	'/static/cat.png',	'/static/cat.png,/static/cat.png,/static/cat.png,/static/cat.png',	'0',	'0'),
 (4,	'AgroTechSIm2',	'AgroTechSim2',	'Десктопное ПО',	'Симулятор для полетов',	1,	1,	'images/logoARA.ico',	'/static/cat.png',	'/static/cat.png,/static/cat.png,/static/cat.png,/static/cat.png',	'0',	'0'),
 (3,	'AgroTechSIm4',	'AgroTechSim4',	'Десктопное ПО',	'Симулятор для полетов',	1,	1,	'images/logoARA.ico',	'/static/cat.png',	'/static/cat.png,/static/cat.png,/static/cat.png,/static/cat.png',	'0',	'0');
 
-TRUNCATE "version";
+TRUNCATE "version" CASCADE;
 INSERT INTO "version" ("id", "simulator_id", "version_str", "build_ref", "patch_note", "image", "os", "at_load", "archive_size", "sys_req") VALUES
 (1,	1,	'0.4.11',	'https://disk.yandex.ru/d/oama_mdIY3Ig_Q',	'Версия симулятора EduTechSim от компании Прикладная робототехника. Предназначена для получения базовых навыков пилотирования и обслуживания БПЛА различных типов и размеров',	'images/image.PNG',	'WIN',	NULL,	3,	'2'),
 (2,	1,	'0.4.12',	'https://disk.yandex.ru/d/oama_mdIY3Ig_Q',	'Версия симулятора EduTechSim от компании Прикладная робототехника. Предназначена для базовых навыков пилотирования и обслуживания БПЛА различных типов и размеров',	'images/image_qHIHiN2.PNG',	'LIN',	NULL,	3,	'2'),
