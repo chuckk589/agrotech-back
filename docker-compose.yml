@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile
       target: base
     container_name: nest_api
-    command: sh -c -f "yarn mikro-orm seeder:clean&&yarn mikro-orm seeder:run --class=ConfigSeeder;yarn run start:prod"
+    command: sh -c -f "yarn schema:clean;yarn run start:prod"
     restart: unless-stopped
     env_file: ./.env
     ports:
