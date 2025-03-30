@@ -1,4 +1,5 @@
-﻿import { Injectable } from '@nestjs/common';
+﻿import { FindOptions } from '@mikro-orm/postgresql';
+import { Injectable } from '@nestjs/common';
 import { Simulator } from '../entities/Simulator';
 import { NestedKeys } from '../types/populate';
 import { BaseRepo } from './base.repo';
@@ -11,5 +12,18 @@ export class SimulatorRepository extends BaseRepo<Simulator> {
 
   get entityName() {
     return Simulator;
+  }
+
+  async findAll(populate: boolean) {
+    const options: FindOptions<Simulator> = {
+      populateOrderBy: { versions: { versionStr: 'DESC' } },
+    };
+
+    if (populate) {
+      options.populate = this.populateKeys as any;
+    }
+
+    const promise: Promise<Simulator[]> = this._em.find(this.entityName, {}, options);
+    return promise;
   }
 }
