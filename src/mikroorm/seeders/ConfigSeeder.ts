@@ -46,9 +46,9 @@ INSERT INTO "manual_versions" ("manual_id", "version_id") VALUES
 TRUNCATE "simulator" CASCADE;
 INSERT INTO "simulator" ("id", "label", "first_name", "second_name", "description", "product_key", "product_number", "icon", "main_image", "images", "is_free", "edu_sim") VALUES
 (1,	'AgroTechSIm',	'AgroTechSim',	'Десктопное ПО',	'Симулятор для полетов',	1,	1,	'images/logoARA.ico',	'/static/cat.png',	'/static/cat.png,/static/cat.png,/static/cat.png,/static/cat.png',	'0',	'0'),
-(2,	'AgroTechSIm2',	'AgroTechSim2',	'Десктопное ПО',	'Симулятор для полетов',	1,	1,	'images/logoARA.ico',	'/static/cat.png',	'/static/cat.png,/static/cat.png,/static/cat.png,/static/cat.png',	'0',	'0'),
-(4,	'AgroTechSIm4',	'AgroTechSim4',	'Десктопное ПО',	'Симулятор для полетов',	1,	1,	'images/logoARA.ico',	'/static/cat.png',	'/static/cat.png,/static/cat.png,/static/cat.png,/static/cat.png',	'0',	'0'),
-(3,	'AgroTechSIm3',	'AgroTechSim3',	'Десктопное ПО',	'Симулятор для полетов',	1,	1,	'images/logoARA.ico',	'/static/cat.png',	'/static/cat.png,/static/cat.png,/static/cat.png,/static/cat.png',	'0',	'0');
+(2,	'AgroTechSIm2',	'AgroTechSim2',	'Десктопное ПО',	'Симулятор для полетов',	2,	2,	'images/logoARA.ico',	'/static/cat.png',	'/static/cat.png,/static/cat.png,/static/cat.png,/static/cat.png',	'0',	'0'),
+(4,	'AgroTechSIm4',	'AgroTechSim4',	'Десктопное ПО',	'Симулятор для полетов',	3,	3,	'images/logoARA.ico',	'/static/cat.png',	'/static/cat.png,/static/cat.png,/static/cat.png,/static/cat.png',	'0',	'0'),
+(3,	'AgroTechSIm3',	'AgroTechSim3',	'Десктопное ПО',	'Симулятор для полетов',	4,	4,	'images/logoARA.ico',	'/static/cat.png',	'/static/cat.png,/static/cat.png,/static/cat.png,/static/cat.png',	'0',	'0');
 
 TRUNCATE "version" CASCADE;
 INSERT INTO "version" ("id", "simulator_id", "version_str", "build_ref", "patch_note", "image", "os", "at_load", "archive_size", "sys_req") VALUES
