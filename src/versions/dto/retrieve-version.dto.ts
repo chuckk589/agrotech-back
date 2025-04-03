@@ -14,7 +14,7 @@ export class RetrieveVersionDto {
     this.atLoad = version.atLoad;
     this.archiveSize = version.archiveSize;
     this.manuals = version.manuals.map((manual) => new RetrieveManualDto(manual));
-    this.sys_req = version.sys_req;
+    this.sys_req = version.sys_req.split(';');
     this.fullName = version.toString();
   }
   id: number;
@@ -27,6 +27,6 @@ export class RetrieveVersionDto {
   atLoad: Date;
   archiveSize: number;
   manuals: RetrieveManualDto[];
-  sys_req: string;
+  sys_req: string[];
   fullName: string;
 }
