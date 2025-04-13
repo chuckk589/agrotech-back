@@ -96,7 +96,7 @@ INSERT INTO "manual_versions" ("manual_id", "version_id") VALUES
 
 TRUNCATE "config";
 INSERT INTO "config" ("id", "name", "value") VALUES
-(1,	'theme',	'agrotechsim'),
+(1,	'theme',	'droneverse'),
 (2,	'backup_theme',	'droneverse');
 
 TRUNCATE "news";
