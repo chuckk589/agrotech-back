@@ -7,22 +7,20 @@ export class RetrieveVersionDto {
     this.id = version.id;
     this.simulator = version.simulator.label;
     this.versionStr = version.versionStr;
-    this.buildRef = version.buildRef;
+    this.yaDiskPath = version.yaDiskPath;
     this.patchNote = version.patchNote;
-    this.image = version.image;
     this.os = version.os;
     this.atLoad = version.atLoad;
     this.archiveSize = version.archiveSize;
     this.manuals = version.manuals.map((manual) => new RetrieveManualDto(manual));
-    this.sys_req = version.sys_req.split(';');
+    this.sys_req = version.sys_req;
     this.fullName = version.toString();
   }
   id: number;
   simulator: string;
   versionStr: string;
-  buildRef: string;
+  yaDiskPath: string;
   patchNote: string;
-  image: string;
   os: OS;
   atLoad: Date;
   archiveSize: number;

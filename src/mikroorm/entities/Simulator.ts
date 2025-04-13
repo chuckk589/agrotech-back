@@ -19,7 +19,7 @@ export class Simulator {
   description!: string;
 
   @Property()
-  productKey!: number;
+  featureNumber!: number;
 
   @Property()
   productNumber!: number;
@@ -31,7 +31,7 @@ export class Simulator {
   mainImage!: string;
 
   @Property({ nullable: true })
-  images!: string;
+  images!: string[];
 
   @Property({ type: 'boolean', default: false })
   isFree!: boolean;

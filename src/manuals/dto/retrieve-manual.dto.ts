@@ -9,4 +9,5 @@ export class RetrieveManualDto {
   id: number;
   manualName: string;
   manualRef: string;
+  size: number;
 }

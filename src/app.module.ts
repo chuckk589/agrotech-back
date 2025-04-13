@@ -10,6 +10,9 @@ import { LicensingModule } from './licensing/licensing.module';
 import { ManualsModule } from './manuals/manuals.module';
 import { SimulatorsModule } from './simulators/simulators.module';
 import { VersionsModule } from './versions/versions.module';
+import { NewsModule } from './news/news.module';
+import { TicketsModule } from './tickets/tickets.module';
+import { ConfigModule } from './config/config.module';
 
 @Module({
   imports: [
@@ -20,6 +23,9 @@ import { VersionsModule } from './versions/versions.module';
     LicensingModule,
     MikroOrmModule.forRoot(ORMOptionsProvider),
     ServeStaticModule.forRoot({ rootPath: join(__dirname, '..', '/public/'), serveRoot: '/static' }),
+    NewsModule,
+    TicketsModule,
+    ConfigModule,
   ],
   controllers: [AppController],
   providers: [AppService],

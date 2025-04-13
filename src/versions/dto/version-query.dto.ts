@@ -9,4 +9,8 @@ export class VersionQueryDto {
   @IsOptional()
   @ApiProperty({ required: false })
   os?: string;
+
+  @IsOptional()
+  @ApiProperty({ required: false })
+  fullVersion?: string;
 }

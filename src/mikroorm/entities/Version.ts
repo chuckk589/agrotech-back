@@ -18,13 +18,10 @@ export class Version {
   versionStr!: string;
 
   @Property()
-  buildRef!: string;
+  yaDiskPath!: string;
 
   @Property()
   patchNote!: string;
-
-  @Property({ type: 'string', nullable: true })
-  image?: string;
 
   @Enum(() => OS)
   os!: OS;
@@ -36,9 +33,15 @@ export class Version {
   archiveSize!: number;
 
   @Property()
-  sys_req: string;
+  sys_req: string[];
 
   toString(): string {
     return `${this.os}_${this.versionStr}_${this.simulator.label}`;
+  }
+  fromFullVersion(fullVersion: string) {
+    const [os, versionStr, label] = fullVersion.split('_');
+    this.os = os as OS;
+    this.versionStr = versionStr;
+    this.simulator = { label } as Simulator;
   }
 }

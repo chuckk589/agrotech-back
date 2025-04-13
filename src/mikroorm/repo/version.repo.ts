@@ -19,6 +19,14 @@ export class VersionRepository extends BaseRepo<Version> {
       where.os = { $eq: filters.os };
     }
 
+    if (filters?.fullVersion) {
+      const version = new Version();
+      version.fromFullVersion(filters.fullVersion);
+
+      where.simulator = { label: { $eq: version.simulator.label } };
+      where.versionStr = { $eq: version.versionStr };
+      where.os = { $eq: version.os };
+    }
     const versions = await this._em.find(Version, where, { populate: _populateKeys });
 
     return versions;
