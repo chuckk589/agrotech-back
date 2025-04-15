@@ -15,6 +15,9 @@ services:
       - postgresdb
     networks:
       - app_network
+    volumes:
+      - ./public:/app/public
+      - ./uploads:/app/uploads
     stdin_open: true
     tty: true
   postgresdb:
