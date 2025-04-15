@@ -6,6 +6,7 @@ import { SimulatorsService } from './simulators.service';
 @Controller('simulators')
 export class SimulatorsController {
   constructor(private readonly simulatorsService: SimulatorsService) {}
+
   @Get()
   @ApiResponse({ status: 200, description: 'Get all simulators', type: RetrieveSimulatorDto, isArray: true })
   findAll(@Query('os') os: string) {

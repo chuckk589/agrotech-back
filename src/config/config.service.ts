@@ -17,13 +17,14 @@ export class ConfigService {
       throw new HttpException('Multiple versions found!', HttpStatus.NOT_FOUND);
     }
     const baseUrl = 'https://cloud-api.yandex.net/v1/disk/resources/download?path=';
-    const localYandexPath = join('disk:', version[0].yaDiskPath).replace(/\\/g, '/');
+    const localYandexPath = join(process.env.YANDEX_DISK_ROOT_PATH + ':', version[0].yaDiskPath).replace(/\\/g, '/');
     const url = `${baseUrl}${localYandexPath}`;
 
     const headers = {
       Authorization: `OAuth ${process.env.YANDEX_OAUTH_TOKEN}`,
     };
     const response = await axios.get(url, { headers }).catch((error) => {
+      console.log(error);
       throw new HttpException(error.response.data, error.response.status);
     });
     const downloadLink = response.data.href;
