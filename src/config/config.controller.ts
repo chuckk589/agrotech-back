@@ -17,4 +17,10 @@ export class ConfigController {
   findDownloadLink(@Query('fullVersion') path: string) {
     return this.configService.getDownloadLink(path);
   }
+
+  @Get('manual-link')
+  @ApiResponse({ status: 200, description: 'Returns ya download link for requested ya disk local path', type: String })
+  findManualLink(@Query('manual_id') id: string) {
+    return this.configService.getManualDownloadLink(+id);
+  }
 }

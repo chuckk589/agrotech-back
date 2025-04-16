@@ -1,6 +1,5 @@
-import { Collection, Entity, Enum, ManyToMany, ManyToOne, PrimaryKey, Property } from '@mikro-orm/core';
+import { Entity, Enum, ManyToOne, PrimaryKey, Property } from '@mikro-orm/core';
 import { OS } from '../types/enums';
-import { Manual } from './Manual';
 import { Simulator } from './Simulator';
 
 @Entity()
@@ -10,9 +9,6 @@ export class Version {
 
   @ManyToOne(() => Simulator)
   simulator!: Simulator;
-
-  @ManyToMany(() => Manual, (manual) => manual.versions)
-  manuals = new Collection<Manual>(this);
 
   @Property()
   versionStr!: string;
@@ -29,7 +25,7 @@ export class Version {
   @Property({ type: 'date', nullable: true })
   atLoad?: Date;
 
-  @Property()
+  @Property({ comment: 'Size of the archive in GB' })
   archiveSize!: number;
 
   @Property()

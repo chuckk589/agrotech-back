@@ -1,3 +1,4 @@
+import { RetrieveManualDto } from 'src/manuals/dto/retrieve-manual.dto';
 import { Simulator } from '../../mikroorm/entities/Simulator';
 import { RetrieveVersionDto } from '../../versions/dto/retrieve-version.dto';
 
@@ -17,6 +18,7 @@ export class RetrieveSimulatorDto {
     this.versions = simulator.versions.map((version) => new RetrieveVersionDto(version));
     this.images = simulator.images;
     this.lastVersion = this.versions[0]?.versionStr;
+    this.manuals = simulator.manuals?.map((manual) => new RetrieveManualDto(manual));
   }
   id: number;
   label: string;
@@ -28,6 +30,7 @@ export class RetrieveSimulatorDto {
   icon: string;
   mainImage: string;
   isFree: boolean;
+  manuals: RetrieveManualDto[];
   eduSim: boolean;
   versions: RetrieveVersionDto[];
   images: string[];

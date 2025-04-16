@@ -8,7 +8,7 @@ import { BaseRepo } from './base.repo';
 @Injectable()
 export class SimulatorRepository extends BaseRepo<Simulator> {
   get populateKeys(): NestedKeys<Simulator>[] {
-    return ['versions.manuals'];
+    return ['versions', 'manuals'];
   }
 
   get entityName() {

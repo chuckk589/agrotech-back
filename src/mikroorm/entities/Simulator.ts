@@ -1,4 +1,5 @@
-import { Collection, Entity, OneToMany, PrimaryKey, Property } from '@mikro-orm/core';
+import { Collection, Entity, ManyToMany, OneToMany, PrimaryKey, Property } from '@mikro-orm/core';
+import { Manual } from './Manual';
 import { Version } from './Version';
 
 @Entity()
@@ -41,6 +42,9 @@ export class Simulator {
 
   @OneToMany(() => Version, (version) => version.simulator)
   versions = new Collection<Version>(this);
+
+  @ManyToMany(() => Manual, (manual) => manual.simulators)
+  manuals = new Collection<Manual>(this);
 
   toString(): string {
     return this.label;

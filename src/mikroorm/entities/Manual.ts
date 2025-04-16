@@ -1,17 +1,17 @@
 import { Collection, Entity, ManyToMany, PrimaryKey, Property } from '@mikro-orm/core';
-import { Version } from './Version';
+import { Simulator } from './Simulator';
 
 @Entity()
 export class Manual {
   @PrimaryKey()
   id!: number;
 
-  @ManyToMany(() => Version)
-  versions = new Collection<Version>(this);
+  @ManyToMany(() => Simulator)
+  simulators = new Collection<Simulator>(this);
 
   @Property()
   manualName!: string;
 
   @Property()
-  manualRef!: string;
+  yaDiskPath!: string;
 }
