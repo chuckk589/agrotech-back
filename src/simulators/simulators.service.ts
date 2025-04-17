@@ -6,10 +6,7 @@ import { RetrieveSimulatorDto } from './dto/retrieve-simulator.dto';
 @Injectable()
 export class SimulatorsService {
   constructor(private readonly simulatorRepository: SimulatorRepository) {}
-  // async findOne(id: number, os: string) {
-  //   const simulator = await this.simulatorRepository.findById(id, true);
-  //   return new RetrieveSimulatorDto(simulator);
-  // }
+
   async findAll(os: string) {
     const simulators = await this.simulatorRepository.findAllFiltered({ os: this.decomposeOs(os) }, true);
 

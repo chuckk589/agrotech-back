@@ -13,5 +13,5 @@ export class Manual {
   manualName!: string;
 
   @Property()
-  yaDiskPath!: string;
+  manualRef!: string;
 }

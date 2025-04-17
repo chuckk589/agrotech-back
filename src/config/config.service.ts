@@ -26,15 +26,15 @@ export class ConfigService {
 
     return response.data.href;
   }
-  async getManualDownloadLink(manual_id: number) {
-    const manual = await this.manualRepo.findById(manual_id, false);
-    if (!manual) {
-      throw new HttpException('Manual not found', HttpStatus.NOT_FOUND);
-    }
-    const url = await this.resolveYandexLink(manual.yaDiskPath);
+  // async getManualDownloadLink(manual_id: number) {
+  //   const manual = await this.manualRepo.findById(manual_id, false);
+  //   if (!manual) {
+  //     throw new HttpException('Manual not found', HttpStatus.NOT_FOUND);
+  //   }
+  //   const url = await this.resolveYandexLink(manual.yaDiskPath);
 
-    return url;
-  }
+  //   return url;
+  // }
   async getDownloadLink(fullVersion: string) {
     const version = await this.versionRepo.findWithQuery({ fullVersion });
 
