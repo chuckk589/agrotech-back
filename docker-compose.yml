@@ -48,7 +48,8 @@ services:
       - pgadmin-data:/var/lib/pgadmin
 volumes:
   pgdata:
-
+  pgadmin-data:
+  
 networks:
   app_network:
     driver: bridge
