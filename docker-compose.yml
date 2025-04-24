@@ -46,10 +46,12 @@ services:
       PGADMIN_DEFAULT_PASSWORD: admin
     volumes:
       - pgadmin-data:/var/lib/pgadmin
+    networks:
+      - app_network 
 volumes:
   pgdata:
   pgadmin-data:
-  
+
 networks:
   app_network:
     driver: bridge
