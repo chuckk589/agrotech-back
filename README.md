@@ -20,7 +20,8 @@
    ```
 
 ## Notes
-- pgadmin available at `ip:5050`
-- postgresql host for pgadmin: `postgresdb`
+- adminer available at `ip:8080`
+- host for adminer: `postgresdb`
+- user for adminer: `root`
 - `config` table must contain following values:
   - `name`: `theme`, `value`: `agrotechsim` or `droneverse`
